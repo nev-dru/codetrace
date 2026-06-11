@@ -1,0 +1,10 @@
+{
+  "name": "codetrace",
+  "displayName": "Codetrace",
+  "version": "1.0.0",
+  "description": "Code-graph navigation for agents: codetrace (gopls/VTA-exact Go + JS + cross-layer UI→API→DB tracing) plus codebase-memory (159-language tree-sitter graph).",
+  "author": { "name": "nev-dru" },
+  "repository": "https://github.com/nev-dru/codetrace",
+  "license": "MIT",
+  "keywords": ["code-navigation", "call-graph", "go", "javascript", "static-analysis"]
+}

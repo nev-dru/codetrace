@@ -1,0 +1,14 @@
+{
+  "name": "codetrace",
+  "description": "Code-graph navigation toolkit for agents: codetrace (precise Go/JS + cross-layer tracing) and codebase-memory (159-language code graph).",
+  "owner": { "name": "nev-dru" },
+  "plugins": [
+    {
+      "name": "codetrace",
+      "source": "./",
+      "description": "Code-graph navigation for agents: precise Go/JS tracing + any-language code graph.",
+      "version": "1.0.0",
+      "author": { "name": "nev-dru" }
+    }
+  ]
+}
