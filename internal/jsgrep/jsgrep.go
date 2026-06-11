@@ -51,7 +51,7 @@ func Parse(out []byte) ([]Loc, error) {
 // dir) and returns the raw JSON match array.
 func runRaw(root, pattern string) ([]byte, error) {
 	if _, err := exec.LookPath("ast-grep"); err != nil {
-		return nil, fmt.Errorf("ast-grep not installed (brew install ast-grep)")
+		return nil, fmt.Errorf("ast-grep not installed (see https://ast-grep.github.io for install options)")
 	}
 	cmd := exec.Command("ast-grep", "run", "--pattern", pattern, "--json=compact", root)
 	out, err := cmd.Output()

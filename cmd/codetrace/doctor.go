@@ -17,9 +17,10 @@ type tool struct {
 
 var tools = []tool{
 	{"gopls", true, "go install golang.org/x/tools/gopls@latest"},
-	{"ast-grep", false, "brew install ast-grep   # needed only for JS refs/def"},
-	{"ctags", false, "brew install universal-ctags   # optional symbol fallback"},
+	{"ast-grep", false, "see https://ast-grep.github.io — needed only for JS refs/def and stitched queries"},
+	{"ctags", false, "see https://ctags.io — optional symbol fallback"},
 	{"git", true, "install git"},
+	{"codebase-memory-mcp", false, "optional companion for non-Go/JS languages — install its binary to ~/.local/bin (codebase-memory skill is disabled without it)"},
 }
 
 func cmdDoctor(args []string) error {
@@ -35,9 +36,18 @@ func cmdDoctor(args []string) error {
 		}
 		// go-installed binaries often live outside PATH
 		home, _ := os.UserHomeDir()
-		alt := filepath.Join(home, "go", "bin", t.name)
-		if _, err := os.Stat(alt); err == nil {
-			fmt.Printf("ok       %-10s %s (not on PATH)\n", t.name, alt)
+		found := false
+		for _, alt := range []string{
+			filepath.Join(home, "go", "bin", t.name),
+			filepath.Join(home, ".local", "bin", t.name),
+		} {
+			if _, err := os.Stat(alt); err == nil {
+				fmt.Printf("ok       %-10s %s (not on PATH)\n", t.name, alt)
+				found = true
+				break
+			}
+		}
+		if found {
 			continue
 		}
 		status := "missing "
